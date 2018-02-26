@@ -1,6 +1,7 @@
 //import * as _ from 'lodash';
 import { sayHello } from './utils';
 import './shared';
+import '../styles/appStyles.scss';
 
 sayHello();
 
