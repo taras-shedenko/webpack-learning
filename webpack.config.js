@@ -22,6 +22,7 @@ module.exports = {
       })
     }]
   },
+  watch: true,
   plugins: [
     new CommonsChunkPlugin({
       name: 'shared',
