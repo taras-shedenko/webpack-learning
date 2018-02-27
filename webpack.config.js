@@ -4,6 +4,8 @@ const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const pkg = require('./package.json');
 const path = require('path');
 
+const distPath = path.join(__dirname, 'dist/');
+
 module.exports = {
   entry: {
     app: './src/scripts/app.js' ,
@@ -22,20 +24,24 @@ module.exports = {
       })
     }]
   },
-  watch: true,
+  //watch: true,
+  devServer: {
+    contentBase: path.resolve(__dirname, 'dist'),
+    port: 9000
+  },
   plugins: [
     new CommonsChunkPlugin({
       name: 'shared',
       minChunks: 2
     }),
     new HtmlWebpackPlugin({
-      filename: "./dist/index.app.html",
+      filename: distPath + "index.html",
       title: "Wepack Learning",
       hash: true,
       chunks: ['vendor', 'shared', 'app']
     }),
     new HtmlWebpackPlugin({
-      filename: "./dist/index.settings.html",
+      filename: distPath + "settings.html",
       title: "Wepack Learning",
       hash: true,
       chunks: ['vendor', 'shared', 'settings']
